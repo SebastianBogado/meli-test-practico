@@ -1,7 +1,7 @@
 {
   "name": "meli",
   "version": "0.0.1",
-  "description": "meli's tech exercise",
+  "description": "meli's tech exercise - server",
   "main": "index.js",
   "author": "sebastian.bogado <sebastian.j.bogado@gmail.com>",
   "license": "MIT",
@@ -10,5 +10,8 @@
   },
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
   }
 }
