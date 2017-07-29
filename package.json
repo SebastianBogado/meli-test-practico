@@ -1,0 +1,8 @@
+{
+  "name": "meli",
+  "version": "0.0.1",
+  "description": "meli's tech exercise",
+  "main": "index.js",
+  "author": "sebastian.bogado <sebastian.j.bogado@gmail.com>",
+  "license": "MIT"
+}
