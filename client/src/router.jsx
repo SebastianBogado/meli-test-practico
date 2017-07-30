@@ -7,12 +7,11 @@ import thunk from 'redux-thunk';
 import App from './App/App.jsx';
 import Items from './App/Items';
 import Item from './App/Item/Item.jsx';
-
-const reducers = {};
+import searchReducer from './App/App.reducer';
 
 const store = createStore(
   combineReducers({
-    ...reducers,
+    search: searchReducer,
     routing: routerReducer
   }),
   compose(

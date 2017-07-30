@@ -9,9 +9,18 @@ import search2x from './ic_Search@2x.png';
 // bootstrap == worst decision ever
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { searchValue: props.searchInitialValue };
+  };
+
+  searchInputChange = (e) => {
+    this.setState({searchValue: e.target.value});
+  };
+
   submit = (e) => {
     e.preventDefault();
-    this.props.search();
+    this.props.search(this.state.searchValue);
   };
 
   render() {
@@ -38,7 +47,11 @@ class Header extends React.Component {
             ].join(' ')}
               >
                 <form className={style.search} onSubmit={this.submit}>
-                  <input type="text" placeholder="Nunca dejes de buscar"/>
+                  <input
+                    type="text"
+                    placeholder="Nunca dejes de buscar"
+                    value={this.state.searchValue}
+                    onChange={this.searchInputChange} />
                   <button type="submit">
                     <img src={search} srcSet={search2x + ' 2x'} />
                   </button>
@@ -50,6 +63,15 @@ class Header extends React.Component {
       </div>
     );
   }
+}
+
+Header.propTypes = {
+  search: React.PropTypes.func.isRequired,
+  searchInitialValue: React.PropTypes.string,
+};
+
+Header.defaultProps = {
+  searchInitialValue: '',
 };
 
 export default Header;

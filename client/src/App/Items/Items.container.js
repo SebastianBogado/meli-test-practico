@@ -14,7 +14,8 @@ const actions = {
 };
 
 function mapStateToProps(state) {
-  return { query: 'q' };
+  const { items, categories } = state.search.result;
+  return { items, categories };
 }
 
 
