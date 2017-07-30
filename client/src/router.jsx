@@ -5,6 +5,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 import App from './App/App.jsx';
+import Items from './App/Items/Items.jsx';
 
 const reducers = {};
 
@@ -19,8 +20,6 @@ const store = createStore(
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
-
-const Items = () => <div style={{backgroundColor: 'red'}}>hola</div>
 
 const AppRouter = function AppRouter() {
   return (

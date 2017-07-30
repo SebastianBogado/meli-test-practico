@@ -11,13 +11,7 @@ const Breadcrumbs = (props) => (
 );
 
 Breadcrumbs.defaultProps = {
-  categories: [
-    'Electronica, Audio y video',
-    'iPod',
-    'Reproductores',
-    'iPod touch',
-    '32 GB'
-  ]
+  categories: []
 };
 
 export default Breadcrumbs;

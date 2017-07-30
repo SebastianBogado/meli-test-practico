@@ -1,0 +1,40 @@
+.container {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.item {
+  padding: 16px;
+  border-bottom: 1px solid grey;
+}
+
+.item:last-child {
+  border: none;
+}
+
+.thumbnail {
+  width: 180px;
+  height: 180px;
+  margin-right: 16px;
+  border-radius: 4px;
+}
+
+.info {
+  display: inline-block;
+}
+
+.priceAndShipping {
+  margin-bottom: 32px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.freeShipping {
+  height: 24px;
+}
+
+.title {
+  height: 24px;
+}
