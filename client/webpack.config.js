@@ -9,7 +9,8 @@ module.exports = {
     proxy: {
       '/api/*': 'http://localhost:3000'
     },
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true
   },
   output: {
     filename: 'bundle.js',
