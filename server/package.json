@@ -13,7 +13,9 @@
     "watch": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "axios": "^0.16.2",
+    "express": "^4.15.3",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

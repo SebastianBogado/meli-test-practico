@@ -27,7 +27,6 @@ const Item = ({categories, item}) => (
       <div className={style.description}>
         <div>Descripción del producto</div>
         <div dangerouslySetInnerHTML={ { __html: item.description }} />
-
       </div>
     </div>
   </div>
