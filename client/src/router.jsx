@@ -6,12 +6,14 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import thunk from 'redux-thunk';
 import App from './App/App.jsx';
 import Items from './App/Items';
-import Item from './App/Item/Item.jsx';
+import Item from './App/Item';
 import searchReducer from './App/App.reducer';
+import itemReducer from './App/Item/Item.reducer';
 
 const store = createStore(
   combineReducers({
     search: searchReducer,
+    itemDetail: itemReducer,
     routing: routerReducer
   }),
   compose(

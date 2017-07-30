@@ -5,37 +5,30 @@
 } from 'js/constants/Actions';
 */
 
-const SEARCH_LOADING = 'SEARCH_LOADING';
-const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
-const SEARCH_ERROR = 'SEARCH_ERROR';
+const ITEM_DETAIL_LOADING = 'ITEM_DETAIL_LOADING';
+const ITEM_DETAIL_SUCCESS = 'ITEM_DETAIL_SUCCESS';
+const ITEM_DETAIL_ERROR = 'ITEM_DETAIL_ERROR';
 
 const initialState = {
   loading: false,
-  error: '',
-  result: {
-    categories: [],
-    items: []
-  }
+  item:  { price: {} },
 };
 
 
 function operations(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_LOADING:
+    case ITEM_DETAIL_LOADING:
       return {
         ...initialState,
         loading: true,
       };
-    case SEARCH_SUCCESS:
+    case ITEM_DETAIL_SUCCESS:
       return {
         ...state,
         loading: false,
-        result: {
-          categories: action.response.categories,
-          items: action.response.items,
-        }
+        item: action.response.item,
       };
-    case SEARCH_ERROR:
+    case ITEM_DETAIL_ERROR:
       return {
         ...state,
         loading: false,

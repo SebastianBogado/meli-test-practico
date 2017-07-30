@@ -10,7 +10,7 @@ const Items = (props) => (
     <Breadcrumbs categories={props.categories} />
     <div className={style.container}>
       { props.items.map( item => (
-        <div key={item.id} className={style.item} onClick={props.viewItem}>
+        <div key={item.id} className={style.item} onClick={ () => props.viewItem(item.id) }>
           <img className={style.thumbnail} src={item.picture} />
           <div className={style.info} >
             <div className={style.priceAndShipping}>
@@ -27,6 +27,11 @@ const Items = (props) => (
   </div>
 );
 
+Items.propTypes = {
+  viewItem: React.PropTypes.func.isRequired,
+  categories: React.PropTypes.array,
+  items: React.PropTypes.array,
+};
 
 Items.defaultProps = {
   categories: [],

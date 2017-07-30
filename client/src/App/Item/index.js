@@ -1,5 +1,5 @@
-import Header from './Header.jsx';
-import Container from './Header.container.js';
+import Item from './Item.jsx';
+import Container from './Item.container.js';
 
-export { Header };
+export { Item };
 export default Container;
