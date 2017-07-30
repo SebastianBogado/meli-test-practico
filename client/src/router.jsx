@@ -5,7 +5,8 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 import App from './App/App.jsx';
-import Items from './App/Items/Items.jsx';
+import Items from './App/Items';
+import Item from './App/Item/Item.jsx';
 
 const reducers = {};
 
@@ -27,6 +28,7 @@ const AppRouter = function AppRouter() {
       <Router history={history}>
         <Route path="/" component={App} >
           <Route path="/items" component={Items} />
+          <Route path="/items/:id" component={Item} />
         </Route>
       </Router>
     </Provider>

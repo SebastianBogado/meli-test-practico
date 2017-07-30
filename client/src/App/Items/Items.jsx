@@ -13,7 +13,7 @@ const Items = (props) => (
     <Breadcrumbs categories={props.categories} />
     <div className={style.container}>
       { props.items.map( item => (
-        <div className={style.item} onClick={pedo}>
+        <div className={style.item} onClick={props.viewItem}>
           <img className={style.thumbnail} src={item.picture} />
           <div className={style.info} >
             <div className={style.priceAndShipping}>
