@@ -5,7 +5,7 @@ import style from './style.css';
 const Breadcrumbs = (props) => (
   <div className={style.container}>
     {props.categories.map( cat => (
-      <span>{cat + ' > '}</span>
+      <span key={cat}>{cat + ' > '}</span>
     ))}
   </div>
 );
