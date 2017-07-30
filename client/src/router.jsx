@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
+import App from './app/App.jsx';
 
 const reducers = {};
 
@@ -18,8 +19,6 @@ const store = createStore(
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
-
-const App = () => <div> app </div>;
 
 const AppRouter = function AppRouter() {
   return (
