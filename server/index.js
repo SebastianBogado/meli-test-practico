@@ -40,6 +40,27 @@ app.get('/api/items', function (req, res) {
   });
 });
 
+app.get('/api/items/:id', function (req, res) {
+  res.send({
+    author: {
+      name: 'Sebastián',
+      lastname: 'Bogado',
+    },
+    item: {
+      id: "MLA603701702",
+      title: "Apple Ipod Touch 6ta Gen 16gb Ultima Generacion Caja Sellad",
+      price: {
+        currency: "ARS",
+        amount: 5999,
+        decimals: 97
+      },
+      picture: "http://mla-s1-p.mlstatic.com/977901-MLA20426607586_092015-I.jpg",
+      condition: "new",
+      free_shipping: false
+    }
+  });
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 });
