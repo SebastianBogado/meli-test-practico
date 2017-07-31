@@ -12,7 +12,8 @@ const ITEM_DETAIL_LOADING = 'ITEM_DETAIL_LOADING';
 const ITEM_DETAIL_SUCCESS = 'ITEM_DETAIL_SUCCESS';
 const ITEM_DETAIL_ERROR = 'ITEM_DETAIL_ERROR';
 
-const initialState = [];
+// const initialState = [];
+const initialState = ["Electrodomésticos y Aires Ac.", "Dispensadores y Purificadores", "Purificadores de Agua", "Pura"]
 
 
 function operations(state = initialState, action) {

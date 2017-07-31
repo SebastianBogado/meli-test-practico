@@ -18,10 +18,10 @@ const Item = ({categories, item}) => (
         <div className={style.info}>
           <div>
             <span>{conditions_es[item.condition]}</span> - <span>{unitsSold(item.sold_quantity)}</span>
-            <div className={style.title}>{item.title}</div>
-            <div className={style.price}>{item.price.amount}</div>
-            <div className={style.price}>buy</div>
           </div>
+          <div className={style.title}>{item.title}</div>
+          <div className={style.price}>{item.price.amount}</div>
+          <button className={style.buyButton}>Comprar</button>
         </div>
       </div>
       <div className={style.description}>

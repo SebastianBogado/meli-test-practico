@@ -55,20 +55,22 @@ function getCategoryIdWithMoreResults(data) {
 app.get('/api/items', function (req, res) {
   axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${req.query.q}&limit=4`)
     .then(function (response) {
+      if (response.data.results.length === 0) return Promise.resolve({ categories: [], items: []});
+
       const catId = getCategoryIdWithMoreResults(response.data);
 
       return Promise.all([
         axios.get('https://api.mercadolibre.com/categories/' + catId),
         response
       ])
+        .then( function ([category, results]) {
+          return {
+            categories: _.map(category.data.path_from_root, 'name'),
+            items: mapItems(results.data.results)
+          };
+        })
     })
-    .then( function ([category, results]) {
-      res.send({
-        categories: _.map(category.data.path_from_root, 'name'),
-        items: mapItems(results.data.results)
-      });
-
-    })
+    .then(res.send)
     .catch(function (error) {
       console.error(error);
     });
