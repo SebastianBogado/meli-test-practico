@@ -1,16 +1,23 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry:  {
+    app: [
+      'react-hot-loader/patch',
+      './src/index'
+    ]
+  },
   devServer: {
     proxy: {
       '/api/*': 'http://localhost:3000'
     },
     contentBase: './dist',
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true,
   },
   output: {
     filename: 'bundle.js',
@@ -53,6 +60,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: './src/index.html',
