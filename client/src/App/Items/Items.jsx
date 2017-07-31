@@ -22,6 +22,7 @@ const Items = (props) => (
               {item.title}
             </div>
           </div>
+          <div className={style.city}> {item.seller_city} </div>
         </div>
       ))}
     </div>

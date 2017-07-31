@@ -1,11 +1,12 @@
 .container {
   background-color: white;
   border-radius: 4px;
+  padding: 0 16px;
 }
 
 .item {
-  padding: 16px;
-  border-bottom: 1px solid grey;
+  padding: 16px 0;
+  border-bottom: 1px solid #EEEEEE;
   cursor: pointer;
 }
 
@@ -16,12 +17,14 @@
 .thumbnail {
   width: 180px;
   height: 180px;
-  margin-right: 16px;
   border-radius: 4px;
+  vertical-align: top;
 }
 
 .info {
   display: inline-block;
+  width: 580px;
+  padding: 16px;
 }
 
 .priceAndShipping {
@@ -41,4 +44,13 @@
 .title {
   font-size: 18px;
   width: 480px; /* five columns */
+}
+
+.city {
+  display: inline-block;
+  width: 180px; /* 2 columns */
+  height: 80px; /* 1 column */
+  vertical-align: top;
+  font-size: 12px;
+  line-height: 72px; /* 1 column - half padding */
 }
