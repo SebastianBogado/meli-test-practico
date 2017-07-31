@@ -59,13 +59,13 @@ app.get('/api/items', function (req, res) {
 
       return Promise.all([
         axios.get('https://api.mercadolibre.com/categories/' + catId),
-        response.data.results
+        response
       ])
     })
     .then( function ([category, results]) {
       res.send({
         categories: _.map(category.data.path_from_root, 'name'),
-        items: mapItems(results)
+        items: mapItems(results.data.results)
       });
 
     })
@@ -74,27 +74,53 @@ app.get('/api/items', function (req, res) {
     });
 });
 
-app.get('/api/items/:id', function (req, res) {
+function getImage(item) {
+  return _.chain(item.pictures)
+    .sortBy((pic) => pic.size.split('x').reduce((a, b) => a * b, 1))
+    .last()
+    .get('url', item.thumbnail)
+    .value();
+}
 
-  axios.get('https://api.mercadolibre.com/items/:id')
-  axios.get('https://api.mercadolibre.com/items/:id/description')
-  axios.get('https://api.mercadolibre.com/categories/:id')
-  res.send({
-    item: {
-      id: "MLA603701702",
-      title: "Apple Ipod Touch 6ta Gen 16gb Ultima Generacion Caja Sellad",
-      price: {
-        currency: "ARS",
-        amount: 5999,
-        decimals: 97
-      },
-      picture: "http://mla-s1-p.mlstatic.com/977901-MLA20426607586_092015-I.jpg",
-      condition: "new",
-      free_shipping: false,
-      sold_quantity: 155,
-      description: '<table width="900" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/header.gif" height="227" width="900" /></td></tr><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/ipod touch 2016.jpg" height="4000" width="900" /></td></tr><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/mercado.jpg" height="232" width="900" /></td></tr><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/envios.gif" height="400" width="900" /></td></tr><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/facebook.gif" height="425" width="900" /></td></tr><tr><td><img src="http://www.serviciospcsi.com.ar/graficas/mecafron/pie.jpg" height="794" width="900" /></td></tr></tbody></table>'
-    }
-  });
+app.get('/api/items/:id', function (req, res) {
+  axios.all([
+    axios.get(`https://api.mercadolibre.com/items/${req.params.id}`),
+    axios.get(`https://api.mercadolibre.com/items/${req.params.id}/description`)
+  ])
+    .then( function ([item, description]) {
+      const catId = item.data.category_id;
+
+      return Promise.all([
+        axios.get('https://api.mercadolibre.com/categories/' + catId),
+        item,
+        description
+      ])
+    })
+    .then( function ([category, item, description]) {
+      item = item.data;
+
+      res.send({
+        categories: _.map(category.data.path_from_root, 'name'),
+        item: {
+          id: item.id,
+          title: item.title,
+          price: {
+            currency: item.currency_id,
+            amount: Math.trunc(item.price),
+            decimals: item.price % 1
+          },
+          picture: getImage(item),
+          condition: item.condition,
+          free_shipping: item.shipping.free_shipping,
+          sold_quantity: item.sold_quantity,
+          description: description.data.text || description.data.plain_text
+        }
+      });
+
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 });
 
 app.listen(3000, function () {

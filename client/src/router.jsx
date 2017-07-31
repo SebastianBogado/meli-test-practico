@@ -9,11 +9,13 @@ import Items from './App/Items';
 import Item from './App/Item';
 import searchReducer from './App/App.reducer';
 import itemReducer from './App/Item/Item.reducer';
+import breadcrumbsReducer from './App/Breadcrumbs/Breadcrumbs.reducer';
 
 const store = createStore(
   combineReducers({
     search: searchReducer,
     itemDetail: itemReducer,
+    breadcrumbs: breadcrumbsReducer,
     routing: routerReducer
   }),
   compose(

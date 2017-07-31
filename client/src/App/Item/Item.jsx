@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs.jsx';
+import Breadcrumbs from '../Breadcrumbs';
 import style from './style.css';
 
 const conditions_es = {
@@ -11,7 +11,7 @@ const unitsSold = (amount) => `${amount} vendido${amount !== 0 ? 's' : ''}`;
 
 const Item = ({categories, item}) => (
   <div>
-    <Breadcrumbs categories={categories} />
+    <Breadcrumbs />
     <div className={style.container}>
       <div className={style.overview}>
         <img className={style.picture} src={item.picture} />
@@ -34,13 +34,7 @@ const Item = ({categories, item}) => (
 
 
 Item.defaultProps = {
-  categories: [
-    'Electronica, Audio y video',
-    'iPod',
-    'Reproductores',
-    'iPod touch',
-    '32 GB'
-  ],
+  categories: [],
   item: { price: {} }
 };
 

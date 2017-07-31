@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs.jsx';
+import Breadcrumbs from '../Breadcrumbs';
 import style from './style.css';
 import freeShipping from './ic_shipping.png';
 import freeShipping2x from './ic_shipping@2x.png';
@@ -7,7 +7,7 @@ import freeShipping2x from './ic_shipping@2x.png';
 
 const Items = (props) => (
   <div>
-    <Breadcrumbs categories={props.categories} />
+    <Breadcrumbs />
     <div className={style.container}>
       { props.items.map( item => (
         <div key={item.id} className={style.item} onClick={ () => props.viewItem(item.id) }>
