@@ -7,9 +7,21 @@ const App = (props) => (
   <div>
     <Header />
     <div className={style.container}>
-      { props.children }
+      { props.loading ? 'Loading...' : props.children }
     </div>
   </div>
 );
+
+
+App.propTypes = {
+  children: React.PropTypes.node,
+  loading: React.PropTypes.bool,
+};
+
+
+App.defaultProps = {
+  loading: false
+};
+
 
 export default App;

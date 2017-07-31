@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.css';
 
 
-const Item = ({ className, price }) => (
+const Price = ({ className, price }) => (
   <span className={className}>
     <span className={style.currency}>{price.currency}</span>
     <span className={style.amount}>{price.amount.toLocaleString('es-AR')}</span>
@@ -11,15 +11,15 @@ const Item = ({ className, price }) => (
 );
 
 
-Item.propTypes = {
+Price.propTypes = {
   price: React.PropTypes.object,
   className: React.PropTypes.string,
 };
 
 
-Item.defaultProps = {
+Price.defaultProps = {
   price: { amount: 0 },
   className: '',
 };
 
-export default Item;
+export default Price;

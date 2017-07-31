@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import axios from 'axios';
+import {
+  SEARCH_LOADING, SEARCH_SUCCESS, SEARCH_ERROR,
+} from '../constants/actions';
+
 
 import Header from './Header.jsx';
 
-const SEARCH_LOADING = 'SEARCH_LOADING';
-const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
-const SEARCH_ERROR = 'SEARCH_ERROR';
 
 const actions = {
   search(search) {

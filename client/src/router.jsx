@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
-import App from './App/App.jsx';
+import App from './App';
 import Items from './App/Items';
 import Item from './App/Item';
 import searchReducer from './App/App.reducer';

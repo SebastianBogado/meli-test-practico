@@ -10,6 +10,7 @@ const Items = (props) => (
   <div>
     <Breadcrumbs />
     <div className={style.container}>
+      { props.items.length === 0 && 'No se encontraron resultados' }
       { props.items.map( item => (
         <div key={item.id} className={style.item} onClick={ () => props.viewItem(item.id) }>
           <img className={style.thumbnail} src={item.picture} />

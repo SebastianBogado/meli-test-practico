@@ -1,19 +1,10 @@
-/*import {
-  LOGOUT,
-  GET_TOKEN, GET_TOKEN_ERROR, GET_TOKEN_SUCCESS,
-  GET_USER_FROM_TOKEN, GET_USER_FROM_TOKEN_SUCCESS,
-} from 'js/constants/Actions';
-*/
+import {
+  SEARCH_LOADING, SEARCH_SUCCESS, SEARCH_ERROR,
+  ITEM_DETAIL_LOADING, ITEM_DETAIL_SUCCESS, ITEM_DETAIL_ERROR
+} from '../constants/actions';
 
-const SEARCH_LOADING = 'SEARCH_LOADING';
-const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
-const SEARCH_ERROR = 'SEARCH_ERROR';
-const ITEM_DETAIL_LOADING = 'ITEM_DETAIL_LOADING';
-const ITEM_DETAIL_SUCCESS = 'ITEM_DETAIL_SUCCESS';
-const ITEM_DETAIL_ERROR = 'ITEM_DETAIL_ERROR';
 
-// const initialState = [];
-const initialState = ["Electrodomésticos y Aires Ac.", "Dispensadores y Purificadores", "Purificadores de Agua", "Pura"]
+const initialState = [];
 
 
 function operations(state = initialState, action) {
