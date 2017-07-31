@@ -16,7 +16,7 @@ const Items = (props) => (
           <div className={style.info} >
             <div className={style.priceAndShipping}>
               <Price className={style.price} price={item.price} />
-              <img className={style.freeShipping} src={freeShipping} srcSet={freeShipping2x + ' 2x'} />
+              { item.free_shipping && <img className={style.freeShipping} src={freeShipping} srcSet={freeShipping2x + ' 2x'} /> }
             </div>
             <div className={style.title}>
               {item.title}

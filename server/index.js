@@ -65,9 +65,23 @@ app.get('/api/items', function (req, res) {
       if (response.data.results.length === 0) return Promise.resolve({ categories: [], items: []});
 
       const catId = getCategoryIdWithMoreResults(response.data);
+      let categoryPromise;
+
+      // sometimes we can't rely on category with most results appearing as a filter
+      if (!catId) {
+        categoryPromise = Promise.resolve({
+          data: _.chain(response.data.filters)
+            .find({id: 'category'})
+            .get('values')
+            .head()
+            .value(),
+        });
+      } else {
+        categoryPromise = axios.get('https://api.mercadolibre.com/categories/' + catId);
+      }
 
       return Promise.all([
-        axios.get('https://api.mercadolibre.com/categories/' + catId),
+        categoryPromise,
         response
       ])
         .then( function ([category, results]) {
