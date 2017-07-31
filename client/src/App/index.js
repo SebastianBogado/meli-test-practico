@@ -1,5 +1,5 @@
-import App from './App.jsx';
-import Container from './App.container.js';
+import App from './App';
+import Container from './App.container';
 
 export { App };
 export default Container;

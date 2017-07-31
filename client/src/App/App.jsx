@@ -3,7 +3,7 @@ import Header from './Header';
 import style from './style.css';
 
 
-const App = (props) => (
+const App = props => (
   <div>
     <Header />
     <div className={style.container}>
@@ -20,7 +20,8 @@ App.propTypes = {
 
 
 App.defaultProps = {
-  loading: false
+  children: <div />,
+  loading: false,
 };
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import { Router, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import App from './App';
 import Items from './App/Items';
@@ -16,11 +16,12 @@ const store = createStore(
     search: searchReducer,
     itemDetail: itemReducer,
     breadcrumbs: breadcrumbsReducer,
-    routing: routerReducer
+    routing: routerReducer,
   }),
   compose(
     applyMiddleware(routerMiddleware(browserHistory), thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f)
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
+  ),
 );
 
 const history = syncHistoryWithStore(browserHistory, store);

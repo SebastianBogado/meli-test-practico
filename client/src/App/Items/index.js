@@ -1,5 +1,5 @@
-import Items from './Items.jsx';
-import Container from './Items.container.js';
+import Items from './Items';
+import Container from './Items.container';
 
 export { Items };
 export default Container;

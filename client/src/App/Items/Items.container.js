@@ -1,17 +1,15 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-
-
-import Items from './Items.jsx'; 
+import Items from './Items';
 
 const actions = {
   viewItem(id) {
     return (dispatch) => {
       dispatch(push({
-        pathname: '/items/' + id,
+        pathname: `/items/${id}`,
       }));
-    }
-  }
+    };
+  },
 };
 
 function mapStateToProps(state) {

@@ -1,23 +1,23 @@
 import React from 'react';
 import Breadcrumbs from '../Breadcrumbs';
-import Price from '../Price/Price.jsx';
+import Price from '../Price/Price';
 import style from './style.css';
 import freeShipping from './ic_shipping.png';
 import freeShipping2x from './ic_shipping@2x.png';
 
 
-const Items = (props) => (
+const Items = props => (
   <div>
     <Breadcrumbs />
     <div className={style.container}>
       { props.items.length === 0 && 'No se encontraron resultados' }
-      { props.items.map( item => (
-        <div key={item.id} className={style.item} onClick={ () => props.viewItem(item.id) }>
-          <img className={style.thumbnail} src={item.picture} />
+      { props.items.map(item => (
+        <div key={item.id} className={style.item} onClick={() => props.viewItem(item.id)} role="presentation">
+          <img className={style.thumbnail} src={item.picture} alt="" />
           <div className={style.info} >
             <div className={style.priceAndShipping}>
               <Price className={style.price} price={item.price} />
-              { item.free_shipping && <img className={style.freeShipping} src={freeShipping} srcSet={freeShipping2x + ' 2x'} /> }
+              { item.free_shipping && <img className={style.freeShipping} src={freeShipping} srcSet={`${freeShipping2x} 2x`} alt="" /> }
             </div>
             <div className={style.title}>
               {item.title}
@@ -32,11 +32,11 @@ const Items = (props) => (
 
 Items.propTypes = {
   viewItem: React.PropTypes.func.isRequired,
-  items: React.PropTypes.array,
+  items: React.PropTypes.arrayOf({}),
 };
 
 Items.defaultProps = {
-  items: []
+  items: [],
 };
 
 export default Items;

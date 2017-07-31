@@ -1,5 +1,5 @@
-import Breadcrumbs from './Breadcrumbs.jsx';
-import Container from './Breadcrumbs.container.js';
+import Breadcrumbs from './Breadcrumbs';
+import Container from './Breadcrumbs.container';
 
 export { Breadcrumbs };
 export default Container;

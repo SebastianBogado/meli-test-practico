@@ -12,7 +12,11 @@ const Price = ({ className, price }) => (
 
 
 Price.propTypes = {
-  price: React.PropTypes.object,
+  price: React.PropTypes.shape({
+    currency: React.PropTypes.string,
+    amount: React.PropTypes.number,
+    decimals: React.PropTypes.number,
+  }),
   className: React.PropTypes.string,
 };
 

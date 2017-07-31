@@ -1,6 +1,6 @@
 import React from 'react';
 import Breadcrumbs from '../Breadcrumbs';
-import Item from './Item/Item.jsx';
+import Item from './Item/Item';
 import style from './style.css';
 
 class ItemDetailView extends React.Component {
@@ -23,13 +23,16 @@ class ItemDetailView extends React.Component {
 
 ItemDetailView.propTypes = {
   loadItemDetail: React.PropTypes.func.isRequired,
-  item: React.PropTypes.object,
+  item: React.PropTypes.shape({
+    id: React.PropTypes.string,
+    title: React.PropTypes.string,
+  }),
   currentItemId: React.PropTypes.string,
 };
 
 ItemDetailView.defaultProps = {
   item: { id: '' },
-  currentItemId: ''
+  currentItemId: '',
 };
 
 export default ItemDetailView;

@@ -1,11 +1,11 @@
 import {
-  ITEM_DETAIL_LOADING, ITEM_DETAIL_SUCCESS, ITEM_DETAIL_ERROR
+  ITEM_DETAIL_LOADING, ITEM_DETAIL_SUCCESS, ITEM_DETAIL_ERROR,
 } from '../constants/actions';
 
 
 const initialState = {
   loading: false,
-  item:  {},
+  item: {},
 };
 
 
@@ -26,7 +26,7 @@ function operations(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: 'gg'
+        error: 'gg',
       };
     default:
       return state;

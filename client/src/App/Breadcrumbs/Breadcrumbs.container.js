@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Breadcrumbs from './Breadcrumbs.jsx';
+import Breadcrumbs from './Breadcrumbs';
 
 
 function mapStateToProps({ breadcrumbs }) {

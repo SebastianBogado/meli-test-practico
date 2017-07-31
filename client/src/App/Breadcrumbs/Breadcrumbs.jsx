@@ -6,16 +6,20 @@ const Breadcrumbs = ({ categories }) => {
   const lastCategory = categories.pop();
   return (
     <div className={style.container}>
-      {categories.map( cat => (
-        <span key={cat}>{cat + ' > '}</span>
+      {categories.map(cat => (
+        <span key={cat}>{`${cat} > `}</span>
       ))}
       <span key={lastCategory}><b>{lastCategory}</b></span>
     </div>
-  )
+  );
+};
+
+Breadcrumbs.propTypes = {
+  categories: React.PropTypes.arrayOf(React.PropTypes.string),
 };
 
 Breadcrumbs.defaultProps = {
-  categories: []
+  categories: [],
 };
 
 export default Breadcrumbs;

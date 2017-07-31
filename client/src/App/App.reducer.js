@@ -8,8 +8,8 @@ const initialState = {
   error: '',
   result: {
     categories: [],
-    items: []
-  }
+    items: [],
+  },
 };
 
 
@@ -27,13 +27,13 @@ function operations(state = initialState, action) {
         result: {
           categories: action.response.categories,
           items: action.response.items,
-        }
+        },
       };
     case SEARCH_ERROR:
       return {
         ...state,
         loading: false,
-        error: 'gg'
+        error: 'gg',
       };
     default:
       return state;

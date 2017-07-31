@@ -24,18 +24,24 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
         test:  /\.jsx?$/,
         exclude: /node_modules/,
         include: path.join(__dirname, './src'),
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
           },
-        },
+          'eslint-loader'
+        ],
       },
       {
         test: /\.css$/,

@@ -6,7 +6,7 @@ import {
 } from '../constants/actions';
 
 
-import Header from './Header.jsx';
+import Header from './Header';
 
 
 const actions = {
@@ -19,16 +19,16 @@ const actions = {
 
       dispatch({ type: SEARCH_LOADING });
       axios.get('/api/items', {
-        params: { q: search }
+        params: { q: search },
       })
-        .then(function (response) {
+        .then((response) => {
           dispatch({ type: SEARCH_SUCCESS, response: response.data });
         })
-        .catch(function (error) {
+        .catch((error) => {
           dispatch({ type: SEARCH_ERROR, error });
         });
-    }
-  }
+    };
+  },
 };
 
 function makeMapStateToProps(state) {
