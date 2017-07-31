@@ -115,7 +115,7 @@ app.get('/api/items/:id', function (req, res) {
           condition: item.condition,
           free_shipping: item.shipping.free_shipping,
           sold_quantity: item.sold_quantity,
-          description: description.data.text || description.data.plain_text
+          description: description.data.plain_text || description.data.text
         }
       });
 
