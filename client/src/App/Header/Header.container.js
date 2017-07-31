@@ -32,7 +32,8 @@ const actions = {
 };
 
 function makeMapStateToProps(state) {
-  const searchInitialValue = state.routing.locationBeforeTransitions.query.search;
+  const searchInitialValue = state.routing.locationBeforeTransitions ?
+    state.routing.locationBeforeTransitions.query.search : '';
   return () => ({ searchInitialValue });
 }
 

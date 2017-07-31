@@ -14,7 +14,7 @@ class Header extends React.Component {
     this.state = { searchValue: props.searchInitialValue };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.searchInitialValue) this.props.search(this.state.searchValue);
   }
 

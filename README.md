@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Node version 7.2.0
+Node version >= 8.0.0
 
 
 ## Project setup
