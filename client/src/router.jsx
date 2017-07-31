@@ -6,9 +6,9 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import thunk from 'redux-thunk';
 import App from './App';
 import Items from './App/Items';
-import Item from './App/Item';
+import ItemDetailView from './App/ItemDetailView';
 import searchReducer from './App/App.reducer';
-import itemReducer from './App/Item/Item.reducer';
+import itemReducer from './App/ItemDetailView/ItemDetailView.reducer';
 import breadcrumbsReducer from './App/Breadcrumbs/Breadcrumbs.reducer';
 
 const store = createStore(
@@ -31,7 +31,7 @@ const AppRouter = function AppRouter() {
       <Router history={history}>
         <Route path="/" component={App} >
           <Route path="/items" component={Items} />
-          <Route path="/items/:id" component={Item} />
+          <Route path="/items/:id" component={ItemDetailView} />
         </Route>
       </Router>
     </Provider>

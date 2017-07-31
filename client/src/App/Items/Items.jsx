@@ -32,12 +32,10 @@ const Items = (props) => (
 
 Items.propTypes = {
   viewItem: React.PropTypes.func.isRequired,
-  categories: React.PropTypes.array,
   items: React.PropTypes.array,
 };
 
 Items.defaultProps = {
-  categories: [],
   items: []
 };
 

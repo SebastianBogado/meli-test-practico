@@ -13,7 +13,7 @@ function operations(state = initialState, action) {
   switch (action.type) {
     case ITEM_DETAIL_LOADING:
       return {
-        ...initialState,
+        item: { id: action.id },
         loading: true,
       };
     case ITEM_DETAIL_SUCCESS:
