@@ -1,5 +1,6 @@
 import React from 'react';
 import Breadcrumbs from '../Breadcrumbs';
+import Price from '../Price/Price.jsx';
 import style from './style.css';
 import freeShipping from './ic_shipping.png';
 import freeShipping2x from './ic_shipping@2x.png';
@@ -14,7 +15,7 @@ const Items = (props) => (
           <img className={style.thumbnail} src={item.picture} />
           <div className={style.info} >
             <div className={style.priceAndShipping}>
-              <span className={style.price}>{item.price.amount}</span>
+              <Price className={style.price} price={item.price} />
               <img className={style.freeShipping} src={freeShipping} srcSet={freeShipping2x + ' 2x'} />
             </div>
             <div className={style.title}>

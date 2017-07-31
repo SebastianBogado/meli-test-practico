@@ -26,14 +26,20 @@ function getCity({city, state, country}) {
   if (country && country.name) return country.name;
 }
 
+
+// Ideally this should consider every symbol
+const currencySymbols = {
+  'ARS': '$'
+};
+
 function mapItems(results) {
   return results.map( item => ({
     id: item.id,
     title: item.title,
     price: {
-      currency: item.currency_id,
+      currency: currencySymbols[item.currency_id],
       amount: Math.trunc(item.price),
-      decimals: item.price % 1
+      decimals: Math.trunc((item.price % 1) * 100)
     },
     picture: item.thumbnail,
     condition: item.condition,
@@ -41,6 +47,7 @@ function mapItems(results) {
     seller_city: getCity(item.seller_address)
   }))
 }
+
 
 function getCategoryIdWithMoreResults(data) {
   return _.chain(data.available_filters)
@@ -107,9 +114,9 @@ app.get('/api/items/:id', function (req, res) {
           id: item.id,
           title: item.title,
           price: {
-            currency: item.currency_id,
+            currency: currencySymbols[item.currency_id],
             amount: Math.trunc(item.price),
-            decimals: item.price % 1
+            decimals: Math.trunc((item.price % 1) * 100)
           },
           picture: getImage(item),
           condition: item.condition,

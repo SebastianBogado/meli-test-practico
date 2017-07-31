@@ -1,7 +1,9 @@
 import React from 'react';
 import Breadcrumbs from '../Breadcrumbs';
+import Price from '../Price/Price.jsx';
 import style from './style.css';
 
+// This would be tied to a translation feature
 const conditions_es = {
   'new': 'Nuevo',
   'used': 'Usado',
@@ -20,7 +22,7 @@ const Item = ({categories, item}) => (
             <span>{conditions_es[item.condition]}</span> - <span>{unitsSold(item.sold_quantity)}</span>
           </div>
           <div className={style.title}>{item.title}</div>
-          <div className={style.price}>{item.price.amount}</div>
+          <Price className={style.price} price={item.price} />
           <button className={style.buyButton}>Comprar</button>
         </div>
       </div>
@@ -35,7 +37,7 @@ const Item = ({categories, item}) => (
 
 Item.defaultProps = {
   categories: [],
-  item: { price: {} }
+  item: {}
 };
 
 export default Item;
