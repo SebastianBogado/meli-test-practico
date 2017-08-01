@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import searchReducer from './App/App.reducer';
+import searchReducer from './App/SearchResultsView/SearchResultsView.reducer';
 import itemReducer from './App/ItemDetailView/ItemDetailView.reducer';
 import breadcrumbsReducer from './App/Breadcrumbs/Breadcrumbs.reducer';
 

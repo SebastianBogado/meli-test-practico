@@ -1,13 +1,12 @@
-.container {
-  background-color: white;
-  border-radius: 4px;
-  padding: 0 16px;
-}
-
 .item {
+  display: block;
   padding: 16px 0;
   border-bottom: 1px solid #EEEEEE;
   cursor: pointer;
+}
+
+.item, .item:visited {
+  color: black;
 }
 
 .item:last-child {

@@ -1,11 +1,5 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import axios from 'axios';
-import {
-  SEARCH_LOADING, SEARCH_SUCCESS, SEARCH_ERROR,
-} from '../constants/actions';
-
-
 import Header from './Header';
 
 
@@ -16,17 +10,6 @@ const actions = {
         pathname: '/items',
         query: { search },
       }));
-
-      dispatch({ type: SEARCH_LOADING });
-      axios.get('/api/items', {
-        params: { q: search },
-      })
-        .then((response) => {
-          dispatch({ type: SEARCH_SUCCESS, response: response.data });
-        })
-        .catch((error) => {
-          dispatch({ type: SEARCH_ERROR, error });
-        });
     };
   },
 };

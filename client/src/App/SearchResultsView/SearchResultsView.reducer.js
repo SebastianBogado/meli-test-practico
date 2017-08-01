@@ -1,11 +1,12 @@
 import {
   SEARCH_LOADING, SEARCH_SUCCESS, SEARCH_ERROR,
-} from './constants/actions';
+} from '../constants/actions';
 
 
 const initialState = {
   loading: false,
   error: '',
+  query: '',
   result: {
     categories: [],
     items: [],
@@ -19,6 +20,7 @@ function operations(state = initialState, action) {
       return {
         ...initialState,
         loading: true,
+        query: action.query,
       };
     case SEARCH_SUCCESS:
       return {
