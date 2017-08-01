@@ -3,10 +3,13 @@ module.exports = function appendAuthor(req, res, next) {
 
   // this works but I'm creating a function on each request... :/
   res.send = function() {
-    arguments[0].author = {
-      name: 'Sebastián',
-      lastname: 'Bogado',
-    };
+    if (typeof arguments[0] !== 'string') {
+      arguments[0].author = {
+        name: 'Sebastián',
+        lastname: 'Bogado',
+      }
+    }
+
     oldSend.apply(res, arguments);
   };
 

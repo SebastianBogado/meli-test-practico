@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import bootstrap from '../../bootstrap.css';
 import style from './style.css';
 import logo from './Logo_ML.png';
@@ -43,7 +44,9 @@ class Header extends React.Component {
                 bootstrap['col-md-1'],
               ].join(' ')}
               >
-                <img src={logo} srcSet={`${logo2x} 2x`} alt="" />
+                <Link to="/" className={style.logo}>
+                  <img src={logo} srcSet={`${logo2x} 2x`} alt="" />
+                </Link>
               </div>
               <div className={[
                 bootstrap['col-xs-10'],

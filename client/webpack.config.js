@@ -8,7 +8,7 @@ module.exports = {
   entry:  {
     app: [
       'react-hot-loader/patch',
-      './src/index'
+      './client/src/index'
     ]
   },
   devServer: {
@@ -60,7 +60,12 @@ module.exports = {
       {
         test: /\.png$/,
         use: [
-          'file-loader'
+          {
+            loader: 'file-loader', options: {
+              publicPath: 'http://localhost:8080/',
+              name: '[name].[ext]',
+            }
+          }
         ]
       }
     ]
@@ -69,7 +74,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './client/src/index.html',
       filename: 'index.html',
       inject: 'body'
     }),
