@@ -8,7 +8,7 @@ const conditions = {
   used: 'Usado',
 };
 
-const unitsSold = amount => `${amount} vendido${amount !== 0 ? 's' : ''}`;
+const unitsSold = amount => `${amount} vendido${amount !== 1 ? 's' : ''}`;
 
 const Item = ({ item }) => (
   <div>

@@ -39,7 +39,8 @@ function mapItem(item) {
     picture: getBestImage(item),
     condition: item.condition,
     free_shipping: item.shipping.free_shipping,
-    seller_city: getCity(item.seller_address)
+    seller_city: getCity(item.seller_address),
+    sold_quantity: item.sold_quantity
   };
 }
 

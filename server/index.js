@@ -7,5 +7,5 @@ app.use('/api/items', require('./items'));
 
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Meli listening on port 3000!')
 });
