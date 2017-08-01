@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
+import { push } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from './client/src/reducers';
 import routes from './client/src/Routes';
@@ -26,22 +27,37 @@ function handleRender(req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      // You can also check renderProps.components or renderProps.routes for
-      // your "not found" component or route respectively, and send a 404 as
-      // below, if you're using a catch-all route.
-console.log(renderProps)
-      // Render the component to a string
-      const html = ReactDOMServer.renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      );
+      const { location } = renderProps;
+      store.dispatch(push(location));
+      const promises = [];
+      renderProps.components.forEach( (c) => {
+        const { fetchData } = c;
 
-      // Grab the initial state from our Redux store
-      const preloadedState = store.getState();
+        if (fetchData) {
+          promises.push(fetchData(store, location));
+          console.log(promises)
+        }
+      });
+      console.log(promises)
 
-      // Send the rendered page back to the client
-      res.status(200).send(renderFullPage(html, preloadedState))
+      Promise.all(promises)
+        .then(() => {
+          console.log(promises)
+
+          // Render the component to a string
+          const html = ReactDOMServer.renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          );
+
+          // Grab the initial state from our Redux store
+          const preloadedState = store.getState();
+
+          // Send the rendered page back to the client
+          res.status(200).send(renderFullPage(html, preloadedState))
+        })
+        .catch(console.error.bind(console));
     } else {
       res.status(404).send('Not found')
     }
