@@ -32,7 +32,7 @@ npm start
  HMR and all the shiny things.
 
 
-## Pending features
+## Pending tasks
 
 - [ ] Remove Bootstrap (only used at the Header)
 - [ ] Responsive design
@@ -47,5 +47,6 @@ API (one defined at its container, and the other as a static method)
  needing to write again the same thing but for the server
 - [ ] Use semantic attributes following http://schema.org/Product
 - [ ] favicon
-- [ ] items API has mixed responsibilities of handling the requests and 
+- [ ] Items API has mixed responsibilities of handling the requests and 
 performing requests to Meli's API
+- [ ] Error handling
