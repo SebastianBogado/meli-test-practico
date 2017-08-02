@@ -2,13 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
   devtool: 'source-map',
   entry:  {
     app: [
       'react-hot-loader/patch',
-      './src/index'
+      './client/src/index'
     ]
   },
   devServer: {
@@ -45,31 +47,50 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader', options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }
-          },
-          'postcss-loader'
-        ]
+        use: process.env.NODE_ENV === 'PRODUCTION' ?
+          ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: [{
+              loader: 'css-loader', options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              }
+            },
+            'postcss-loader'
+          ]
+        }) :
+          [
+            "style-loader",
+            {
+              loader: 'css-loader', options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              }
+            },
+            'postcss-loader'
+          ]
       },
       {
         test: /\.png$/,
         use: [
-          'file-loader'
+          {
+            loader: 'file-loader', options: {
+              publicPath: process.env.NODE_ENV === 'PRODUCTION' ? '/client/dist/' : '',
+              name: '[name].[ext]',
+            }
+          }
         ]
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin("styles.css"),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './client/src/index.html',
       filename: 'index.html',
       inject: 'body'
     }),

@@ -87,7 +87,7 @@ router.get('/', function (req, res) {
           };
         })
     })
-    .then(res.send)
+    .then(res.send.bind(res))
     .catch(function (error) {
       console.error(error);
     });

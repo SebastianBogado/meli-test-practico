@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
-import ItemDetailView from './ItemDetailView';
 import {
   ITEM_DETAIL_LOADING, ITEM_DETAIL_SUCCESS, ITEM_DETAIL_ERROR,
 } from '../constants/actions';
+
+import ItemDetailView from './ItemDetailView';
 
 
 const actions = {
@@ -22,9 +23,11 @@ const actions = {
 };
 
 function mapStateToProps(state, ownProps) {
+  const { loading, item } = state.itemDetail;
   return {
     currentItemId: ownProps.params.id,
-    item: state.itemDetail.item,
+    item,
+    loading,
   };
 }
 
