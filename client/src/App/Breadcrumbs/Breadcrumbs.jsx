@@ -2,7 +2,8 @@ import React from 'react';
 import style from './style.css';
 
 
-const Breadcrumbs = ({ categories }) => {
+const Breadcrumbs = (props) => {
+  const categories = [...props.categories];
   const lastCategory = categories.pop();
   return (
     <div className={style.container}>

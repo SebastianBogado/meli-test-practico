@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loading = props => (props.loading ? <span>Loading...</span> : props.children);
+const Loading = props => (props.loading ? <span>Cargando...</span> : props.children);
 
 
 Loading.propTypes = {
