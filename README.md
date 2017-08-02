@@ -26,8 +26,9 @@ npm start
 ```
 
 > :warning: Caveat: after SSR I lost the ability to reload changes made
- at the client app, so you need to restart the server to see changes.
- Meanwhile, when focusing on client development, you could run
+ at the client app, so you need to manually restart the server to see 
+ updates on the client.
+ Meanwhile, when focusing on client development, you could also run
  `npm run watch-client`, which opens a server at `localhost:8080` with
  HMR and all the shiny things.
 
