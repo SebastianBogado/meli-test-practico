@@ -9,10 +9,9 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "nodemon index.js --exec babel-node",
+    "start": "npm run build-client && nodemon index.js --exec babel-node",
     "watch-client": "webpack-dev-server --config ./client/webpack.config.js",
-    "build-client": "webpack",
-    "watch-server": "nodemon server/index.js --exec babel-node"
+    "build-client": "NODE_ENV=PRODUCTION webpack --config ./client/webpack.config.js"
   },
   "dependencies": {
     "asset-require-hook": "^1.1.0",
@@ -49,6 +48,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "nodemon": "^1.11.0",

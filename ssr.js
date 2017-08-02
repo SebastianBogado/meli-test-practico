@@ -35,10 +35,8 @@ function handleRender(req, res) {
 
         if (fetchData) {
           promises.push(fetchData(store, location));
-          console.log(promises)
         }
       });
-      console.log(promises)
 
       Promise.all(promises)
         .then(() => {
@@ -72,13 +70,14 @@ function renderFullPage(html, preloadedState) {
       <meta charset="utf-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Meli's tech exercise</title>
+      <link href="/client/dist/styles.css" rel="stylesheet">
     </head>
     <body>
       <div id="app">${html}</div>
       <script>
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
       </script>
-      <script src="http://localhost:8080/bundle.js"></script>
+      <script src="/client/dist/bundle.js"></script>
     </body>
     </html>
     `

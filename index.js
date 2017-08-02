@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 
+app.use('/client/dist', express.static('client/dist'));
 app.use('/api', require('./api'));
 
 // these hooks below avoids failing when importing no-js files at react code
@@ -13,7 +14,7 @@ require('css-modules-require-hook')({
 });
 require('asset-require-hook')({
   extensions: ['png'],
-  publicPath: 'http://localhost:8080/',
+  publicPath: '/client/dist/',
   name: '[name].[ext]'
 });
 
