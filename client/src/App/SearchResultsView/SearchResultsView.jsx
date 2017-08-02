@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Breadcrumbs from '../Breadcrumbs';
+import Loading from '../Loading';
 import Items from './Items/Items';
 import style from './style.css';
 import {
@@ -26,10 +27,11 @@ class SearchResultsView extends React.Component {
   }
 
   componentWillMount() {
-    // added this to avoid reloading the search as soon as the client runs react
+    // added this to avoid triggering the search twice
     if (process && process.env && process.NODE) return;
-    const { query, currentQuery } = this.props;
-    if (currentQuery !== query) this.props.search(query);
+
+    const { query, currentSearchQuery } = this.props;
+    if (query && query !== currentSearchQuery) this.props.search(query);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,27 +40,31 @@ class SearchResultsView extends React.Component {
 
   render() {
     return (
-      <div>
-        <Breadcrumbs />
-        <div className={style.container}>
-          <Items items={this.props.items} />
+      <Loading loading={this.props.loading}>
+        <div>
+          <Breadcrumbs />
+          <div className={style.container}>
+            <Items items={this.props.items} />
+          </div>
         </div>
-      </div>
+      </Loading>
     );
   }
 }
 
 SearchResultsView.propTypes = {
   search: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.bool,
   query: React.PropTypes.string,
-  currentQuery: React.PropTypes.string,
+  currentSearchQuery: React.PropTypes.string,
   items: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 SearchResultsView.defaultProps = {
-  items: [],
+  loading: false,
   query: '',
-  currentQuery: '',
+  items: [],
+  currentSearchQuery: '',
 };
 
 export default SearchResultsView;

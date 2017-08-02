@@ -42,8 +42,6 @@ function handleRender(req, res) {
 
       Promise.all(promises)
         .then(() => {
-          console.log(promises)
-
           // Render the component to a string
           const html = ReactDOMServer.renderToString(
             <Provider store={store}>
@@ -65,6 +63,8 @@ function handleRender(req, res) {
 }
 
 function renderFullPage(html, preloadedState) {
+  // WARNING: See the following for security issues around embedding JSON in HTML:
+  // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
   return `
     <!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -76,8 +76,6 @@ function renderFullPage(html, preloadedState) {
     <body>
       <div id="app">${html}</div>
       <script>
-        // WARNING: See the following for security issues around embedding JSON in HTML:
-        // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
       </script>
       <script src="http://localhost:8080/bundle.js"></script>

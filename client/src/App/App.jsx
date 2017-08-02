@@ -7,7 +7,7 @@ const App = props => (
   <div>
     <Header />
     <div className={style.container}>
-      { props.loading ? 'Loading...' : props.children }
+      { props.children }
     </div>
   </div>
 );
@@ -15,13 +15,11 @@ const App = props => (
 
 App.propTypes = {
   children: React.PropTypes.node,
-  loading: React.PropTypes.bool,
 };
 
 
 App.defaultProps = {
   children: <div />,
-  loading: false,
 };
 
 

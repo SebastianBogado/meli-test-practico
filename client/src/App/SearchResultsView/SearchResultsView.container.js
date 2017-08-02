@@ -4,7 +4,6 @@ import {
   SEARCH_LOADING, SEARCH_SUCCESS, SEARCH_ERROR,
 } from '../constants/actions';
 
-
 import SearchResultsView from './SearchResultsView';
 
 
@@ -26,12 +25,13 @@ const actions = {
 };
 
 function mapStateToProps(state) {
-  const currentQuery = state.search.query;
+  const { loading } = state.search;
+  const currentSearchQuery = state.search.query;
   const { items } = state.search.result;
   const query = state.routing.locationBeforeTransitions ?
     state.routing.locationBeforeTransitions.query.search : '';
 
-  return { items, query, currentQuery };
+  return { items, loading, query, currentSearchQuery };
 }
 
 
